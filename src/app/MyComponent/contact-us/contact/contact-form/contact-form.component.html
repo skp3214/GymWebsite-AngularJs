@@ -8,11 +8,11 @@
 
             <div class="form-group">
                 <input type="text" name="firstName" class="form-control" placeholder="Enter First Name"
-                    [(ngModel)]="contactUs.firstName" required minlength="3">
+                    [(ngModel)]="contactUs.firstName" required pattern="[a-zA-Z ]*"  minlength="3">
             </div>
             <div class="form-group">
                 <input type="text" name="lastName" class="form-control" placeholder="Enter last Name"
-                    [(ngModel)]="contactUs.lastName" required minlength="3">
+                    [(ngModel)]="contactUs.lastName" required pattern="[a-zA-Z ]*" minlength="3">
             </div>
             <div class="form-group">
                 <input #contactphone="ngModel" type="text" name="phone" class="form-control" placeholder="Enter Phone Number"
