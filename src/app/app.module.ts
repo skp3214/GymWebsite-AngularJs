@@ -65,6 +65,7 @@ import { VideoTourComponent } from './MyComponent/video-tour/video-tour.componen
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,

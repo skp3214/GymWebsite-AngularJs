@@ -1,8 +1,7 @@
-import { Component, OnInit ,Inject} from '@angular/core';
-import { Contact } from './contact';
-import { FormGroup, FormBuilder, NgForm } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
-
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
+import { environment } from './contact';  // Import environment
 
 @Component({
   selector: 'app-contact-form',
@@ -10,35 +9,43 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./contact-form.component.css']
 })
 export class ContactFormComponent implements OnInit {
-  
-  // constructor(private snackBar:MatSnackBar){}
-  
-  contactUs: Contact = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    query: ""
-
-  }
-
+  contactForm!: FormGroup;
   showDiv: boolean = false;
- 
+
+  constructor(private formBuilder: FormBuilder) { }
+
   ngOnInit() {
+    this.contactForm = this.formBuilder.group({
+      firstName: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*'), Validators.minLength(3)]],
+      lastName: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*'), Validators.minLength(3)]],
+      phone: ['', [Validators.required, Validators.minLength(10)]],
+      email: ['', [Validators.required, Validators.email, Validators.minLength(10)]],
+      query: ['', [Validators.required, Validators.minLength(6)]],
+    });
   }
 
-  onSubmit(conform:NgForm) {
+  async onSubmit() {
+    await emailjs.send(
+      environment.emailinfo.serviceId,
+      environment.emailinfo.templateId,
+      {
+        from_name: this.contactForm.value.firstName,
+        to_name: environment.emailinfo.name,
+        from_email: this.contactForm.value.email,
+        to_email: environment.emailinfo.email,
+        message: this.contactForm.value.query,
+      },
+      environment.emailinfo.apiKey
+    );
 
     this.showDiv = true;
     setTimeout(() => {
-      conform.reset();
+      this.contactForm.reset();
       this.showDiv = false;
-    }, 5000); 
+    }, 2000);
   }
 
-  resetform(conform:NgForm){
-    conform.reset();
+  resetForm() {
+    this.contactForm.reset();
   }
-
- 
 }
