@@ -15,7 +15,6 @@ Welcome to the AnyDay Fitness Gym website! This project is a comprehensive, dyna
 
 ### Interactive UI
 - **Engagement:** Integrated interactive elements to enhance user engagement and provide an immersive experience.
-- **Responsive Design:** Ensured that the design is visually appealing and responsive across various devices.
 
 ### Data-Driven
 - **Type-Safe Application:** Utilized TypeScript to create a robust and type-safe application, ensuring clean code and improved maintainability.
