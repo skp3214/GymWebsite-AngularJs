@@ -8,6 +8,9 @@ Welcome to the AnyDay Fitness Gym website! This project is a comprehensive, dyna
 
 [![Gymsite](https://img.shields.io/badge/Click_Here-Welcome_to_anydayfitness-orange)](https://anydayfitness.netlify.app/)
 
+![Screenshot_20-9-2024_223132_anydayfitness netlify app](https://github.com/user-attachments/assets/203e7ffa-0a36-4723-ac72-e50dc39209e2)
+
+
 ## Key Features
 
 ### Dynamic Pages
